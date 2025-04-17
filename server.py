@@ -1,8 +1,9 @@
 from fastmcp import FastMCP
 from agents.tweet_agent import agent
-from pydantic_ai.tools import RunContext
+
 mcp = FastMCP("X MCP 🚀", description="A simple MCP server")
 
+# Posting on X
 @mcp.tool()
 async def create_tweet(text: str) -> str:
     """Create a tweet"""

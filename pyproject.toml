@@ -9,5 +9,5 @@ dependencies = [
     "python-twitter-v2>=0.9.2",
     "dotenv>=0.9.9",
     "pydantic-ai>=0.1.2",
-    "pydantic-ai-slim[openai]>=0.1.2",
+    "pydantic-ai-slim[duckduckgo,openai]>=0.1.2",
 ]
