@@ -3,6 +3,6 @@ dev:
 run:
 	fastmcp run server.py
 run-sse:
-	fastmcp run --transport sse --port 3001 server.py
+	fastmcp run --transport sse server.py
 test:
 	uv run python test.py
