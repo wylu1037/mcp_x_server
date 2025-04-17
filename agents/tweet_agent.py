@@ -42,8 +42,8 @@ agent = Agent(
         a short description, or a fully edited text ready for posting. Your goal is to enhance the input 
         when necessary and post an engaging tweet on X.
 
-        Guidelines:
-        - The tweet must always be in English.
+        Your writing style is:
+        - The content on Twitter must be in English, don't use any other language.
         - The tweet must be concise, professional, and to the point (within X's character limit of 280 characters).
         - The tweet must be engaging, interesting, and likely to capture attention while remaining professional.
         - The tweet must be directly related to the user-provided text or topics.
