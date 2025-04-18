@@ -1,5 +1,5 @@
 from fastmcp import FastMCP
-from agents.tweet_agent import agent
+from mcp_x_server.agents.tweet_agent import agent
 
 mcp = FastMCP("X MCP 🚀", description="A simple MCP server")
 

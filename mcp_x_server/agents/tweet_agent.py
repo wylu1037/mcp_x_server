@@ -4,7 +4,7 @@ from pytwitter import Api
 from pytwitter.models.tweet import Tweet
 from dotenv import load_dotenv
 from os import getenv
-from pydantic_ai import Agent, RunContext
+from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.deepseek import DeepSeekProvider
 from pydantic_ai.common_tools.duckduckgo import duckduckgo_search_tool
@@ -36,11 +36,10 @@ agent = Agent(
         provider=DeepSeekProvider(api_key=getenv("DEEPSEEK_API_KEY"))
     ),
     tools=[duckduckgo_search_tool()],
-    system_prompt="You are a professional tweet agent designed to craft engaging, concise, and factual tweets in English for posting on X, based on user-provided text or topics.",
     instructions=dedent("""\
         You are a tweet agent tasked with creating tweets from user-provided input, which may be a keyword,
         a short description, or a fully edited text ready for posting. Your goal is to enhance the input 
-        when necessary and post an engaging tweet on X.
+        when necessary and post an engaging tweet on X. If the input is Chinese, you should translate it to English first.
 
         Your writing style is:
         - The content on Twitter must be in English, don't use any other language.
@@ -82,8 +81,8 @@ api = Api(
     access_secret=getenv("ACCESS_SECRET")
 )
 
-@agent.tool
-def create_tweet(_: RunContext[None], text: str) -> str:
+@agent.tool_plain
+def create_tweet(text: str) -> str:
     """
     Use this tool to create a tweet
 

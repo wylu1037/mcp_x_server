@@ -15,4 +15,4 @@ COPY . .
 RUN uv pip compile pyproject.toml -o requirements.txt && \
     uv pip install --system --no-cache-dir -r requirements.txt
 
-CMD ["python", "server.py"]
+CMD ["python", "mcp_x_server/server.py"]

@@ -720,8 +720,8 @@ wheels = [
 
 [[package]]
 name = "mcp-x-server"
-version = "0.1.0"
-source = { virtual = "." }
+version = "0.1.5"
+source = { editable = "." }
 dependencies = [
     { name = "dotenv" },
     { name = "fastmcp" },

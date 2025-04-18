@@ -1,7 +1,7 @@
 [project]
 name = "mcp-x-server"
-version = "0.1.0"
-description = "Add your description here"
+version = "0.1.5"
+description = "A mcp x server to post tweets"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -11,3 +11,10 @@ dependencies = [
     "pydantic-ai>=0.1.2",
     "pydantic-ai-slim[duckduckgo,openai]>=0.1.2",
 ]
+
+[project.scripts]
+mcp-x-server = "mcp_x_server.__main__:cli"
+
+[build-system]
+requires = ["setuptools >= 77.0.3", "wheel"]
+build-backend = "setuptools.build_meta"

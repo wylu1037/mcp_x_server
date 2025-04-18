@@ -1,8 +1,8 @@
 dev:
-	fastmcp dev server.py
+	fastmcp dev mcp_x_server/server.py
 run:
-	fastmcp run server.py
+	fastmcp run mcp_x_server/server.py
 run-sse:
-	fastmcp run --transport sse server.py
+	fastmcp run --transport sse mcp_x_server/server.py
 test:
 	uv run python test.py
