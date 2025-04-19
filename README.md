@@ -31,7 +31,7 @@ docker build -t mcp-x-server:latest .
                 "/Users/wenyanglu/Workspace/ai/mcp_x_server/server.py"
             ],
             "env": {
-                "CONSUMER_KEY": "*******************",,
+                "CONSUMER_KEY": "*******************",
                 "CONSUMER_SECRET": "*******************",
                 "ACCESS_TOKEN": "*******************",
                 "ACCESS_SECRET": "*******************",
@@ -50,10 +50,10 @@ docker run -i \
   -e ACCESS_TOKEN="your-access-token" \
   -e ACCESS_SECRET="your-access-secret" \
   -e DEEPSEEK_API_KEY="your-deepseek-key" \
-  mcp-x-server:latest
+  wylu1037/mcp-x-server:latest
 ```
 
 ## Run with SSE
 ```shell
-fastmcp run --transport sse server.py
+fastmcp run --transport sse mcp_x_server/server.py
 ```
