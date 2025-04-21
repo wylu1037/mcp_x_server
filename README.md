@@ -1,14 +1,10 @@
 # MCP X Server
 What can you do with MCP X Server? Give it a sentence or a topic, and it will help you write and refine a tweet, then publish it to X.
 
-## Build image
-```shell
-docker build -t mcp-x-server:latest .
-```
-
 ## How to run with STDIO
 
 ### Local
+Configure the MCP server in mcp.json.
 ```json
 {
     "mcpServices": {
@@ -28,7 +24,7 @@ docker build -t mcp-x-server:latest .
                 "python-twitter-v2",
                 "fastmcp",
                 "run",
-                "/Users/wenyanglu/Workspace/ai/mcp_x_server/server.py"
+                "mcp_x_server/server.py"
             ],
             "env": {
                 "CONSUMER_KEY": "*******************",
@@ -43,17 +39,77 @@ docker build -t mcp-x-server:latest .
 ```
 
 ### Docker
-```shell
-docker run -i \
-  -e CONSUMER_KEY="your-consumer-key" \
-  -e CONSUMER_SECRET="your-consumer-secret" \
-  -e ACCESS_TOKEN="your-access-token" \
-  -e ACCESS_SECRET="your-access-secret" \
-  -e DEEPSEEK_API_KEY="your-deepseek-key" \
-  wylu1037/mcp-x-server:latest
+Configure the MCP server in mcp.json.
+```json
+{
+    "mcpServices": {
+        "x-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "--name",
+          "mcp-x-server",
+          "-e",
+          "CONSUMER_KEY",
+          "-e",
+          "CONSUMER_SECRET",
+          "-e",
+          "ACCESS_TOKEN",
+          "-e",
+          "ACCESS_SECRET",
+          "-e",
+          "DEEPSEEK_API_KEY",
+          "wylu1037/mcp-x-server:latest"
+        ],
+        "env": {
+          "CONSUMER_KEY": "********************************",
+          "CONSUMER_SECRET": "********************************",
+          "ACCESS_TOKEN": "********************************",
+          "ACCESS_SECRET": "********************************",
+          "DEEPSEEK_API_KEY": "sk-********************************"
+        }
+      }
+    }
+}
+```
+
+### UVX
+Configure the MCP server in mcp.json.
+```json
+{
+    "mcpServices": {
+        "mcp-x-server": {
+        "command": "uvx",
+        "args": [
+          "mcp-x-server"
+        ],
+        "env": {
+          "CONSUMER_KEY": "********************************",
+          "CONSUMER_SECRET": "********************************",
+          "ACCESS_TOKEN": "********************************",
+          "ACCESS_SECRET": "********************************",
+          "DEEPSEEK_API_KEY": "sk-********************************"
+        }
+      }
+    }
+}
 ```
 
 ## Run with SSE
+Run MCP server
 ```shell
 fastmcp run --transport sse mcp_x_server/server.py
+```
+
+Configure the MCP server in mcp.json.
+```json
+{
+    "mcpServices": {
+        "mcp-x-server": {
+            "url": "http://localhost:8000/sse"
+        }
+    }
+}
 ```
